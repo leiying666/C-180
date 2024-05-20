@@ -1,0 +1,21 @@
+设置按钮的基本属性
+struct button* createbutton(int x, int y, int w, int h, COLORREF color, const char* ptext)
+{
+	struct button* pB = (struct button*)malloc(sizeof(struct button));
+	pB->x = x;
+	pB->y = y;
+	pB->w = w;
+	pB->h = h;
+	pB->color = color;
+	pB->ptext = (char*)malloc(strlen(ptext)+1);
+	strcpy(pB->ptext, ptext);
+	return pB;
+}
+绘制矩形框
+void drawbutton(struct button* pB)
+{
+	setfillcolor(pB->color);
+	settextstyle(35, 0, "楷体");
+	fillrectangle(pB->x, pB->y, pB->x + pB->w, pB->y + pB->h);
+	outtextxy(pB->x + 20, pB->y + 20, pB->ptext);
+}
